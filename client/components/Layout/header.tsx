@@ -17,9 +17,9 @@ const Header = (props: Props) => {
   return (
     <header>
       <nav
-        className={`flex items-center justify-between flex-wrap p-6 fixed top-0 w-full ${
-          isActive ? "bg-white shadow-md" : "bg-none "
-        } `}
+        className={` ${
+          isActive ? "lg:bg-white shadow-md" : "lg:bg-transparent "
+        } flex items-center justify-between flex-wrap p-6 fixed top-0 w-full bg-white `}
       >
         <div className="flex items-center flex-shrink-0  mr-6">
           <Image
@@ -46,23 +46,23 @@ const Header = (props: Props) => {
             </svg>
           </button>
         </div>
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto ">
           <div className="text-sm lg:flex-grow">
             <a
               href="#responsive-header"
-              className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-white mr-4"
+              className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400 mr-4"
             >
               Home
             </a>
             <a
               href="#responsive-header"
-              className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-white mr-4"
+              className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400 mr-4"
             >
               Product
             </a>
             <a
               href="#responsive-header"
-              className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-white"
+              className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400"
             >
               About
             </a>
@@ -70,7 +70,7 @@ const Header = (props: Props) => {
           <div>
             <a
               href="#"
-              className=" flex text-sm px-4 py-2 leading-none border rounded  border-white hover:border-transparent hover:text-gray-400 hover:bg-gray-800 mt-4 lg:mt-0"
+              className=" flex text-sm px-4 py-2 leading-none border rounded  border-white hover:border-transparent hover:text-gray-400 hover:bg-gray-700 mt-4 lg:mt-0"
             >
               <Image
                 src={cartIcon}
