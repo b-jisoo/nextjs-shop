@@ -8,6 +8,7 @@ const productSchema = gql`
     title: String!
     decription: String
     createAt: Float
+    category: String
   }
 
   extend type Query {
