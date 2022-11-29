@@ -1,10 +1,17 @@
+import Hero from "../components/Layout/hero";
+import ProductList from "../components/productList";
 import Seo from "../components/Seo";
 
 export default function Home() {
   return (
-    <div className="h-[3000px] pt-12 bg-green-300">
+    <div className="h-[3000px]  bg-green-300 min-w-[1200px]">
       <Seo />
-      Home 입니다
+      <section id="hero">
+        <Hero />
+      </section>
+      <section id="productList">
+        <ProductList />
+      </section>
     </div>
   );
 }
