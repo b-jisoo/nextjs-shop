@@ -7,14 +7,14 @@ import React, { useEffect, useState } from "react";
 type Props = {};
 
 const Header = (props: Props) => {
-  const [isActive, setIsActive] = useState(false);
+  // const [isActive, setIsActive] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
-    });
-  });
+  // useEffect(() => {
+  //   window.addEventListener("scroll", () => {
+  //     window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
+  //   });
+  // });
 
   const handleClick = () => {
     setOpenMenu(!openMenu);
@@ -23,11 +23,12 @@ const Header = (props: Props) => {
   return (
     <header>
       <nav
-        className={` ${
-          isActive
-            ? "lg:bg-white shadow-md text-black"
-            : "lg:bg-transparent text-white"
-        } flex items-center justify-between flex-wrap p-6 fixed top-0 w-full bg-white z-[99] `}
+        className="flex items-center justify-between flex-wrap p-6 fixed top-0 w-full bg-white z-[99] shadow-md text-black "
+        // className={` ${
+        //   isActive
+        //     ? "lg:bg-white shadow-md text-black"
+        //     : "lg:bg-transparent text-white"
+        // } flex items-center justify-between flex-wrap p-6 fixed top-0 w-full bg-white z-[99] `}
       >
         <div className="flex items-center flex-shrink-0  mr-6">
           <Image
@@ -64,19 +65,19 @@ const Header = (props: Props) => {
         >
           <div className={`text-sm lg:flex-grow  `}>
             <a
-              href="#responsive-header"
+              href="/"
               className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-400 mr-4"
             >
               Home
             </a>
             <a
-              href="#responsive-header"
+              href="/products"
               className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-400 mr-4"
             >
               Product
             </a>
             <a
-              href="#responsive-header"
+              href="#"
               className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-400"
             >
               About
