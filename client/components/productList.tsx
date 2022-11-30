@@ -7,9 +7,9 @@ const ProductList = (props: Props) => {
   return (
     <>
       <div className=" flex justify-center items-center h-32 mt-16 border-b-2 border-gray-700">
-        <h1 className="text-5xl font-bold ">List of products</h1>
+        <h1 className="text-5xl font-bold ">상품 목록</h1>
       </div>
-      <div className="flex justify-center items-center w-screen mt-16">
+      <div className="flex justify-center items-center w-full mt-16  ">
         <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mr-5">
           전체
         </button>

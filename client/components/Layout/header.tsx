@@ -3,6 +3,7 @@ import vercel from "../../public/favicon.ico";
 import cartIcon from "../../public/cart_icon.png";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 type Props = {};
 
@@ -64,27 +65,27 @@ const Header = (props: Props) => {
           } `}
         >
           <div className={`text-sm lg:flex-grow  `}>
-            <a
+            <Link
               href="/"
               className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-400 mr-4"
             >
               Home
-            </a>
-            <a
+            </Link>
+            <Link
               href="/products"
               className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-400 mr-4"
             >
               Product
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="admin"
               className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-400"
             >
-              About
-            </a>
+              Admin
+            </Link>
           </div>
           <div>
-            <a
+            <Link
               href="#"
               className=" flex text-sm px-4 py-2 leading-none border rounded bg-white  border-white hover:border-transparent hover:text-gray-200 hover:bg-gray-400 mt-4 lg:mt-0 text-black"
             >
@@ -95,7 +96,7 @@ const Header = (props: Props) => {
                 className="mr-1"
               />
               Cart (0)
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
