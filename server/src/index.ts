@@ -4,6 +4,7 @@ import schema from "./schema";
 import resolvers from "./resolvers";
 import mongoose from "mongoose";
 import config from "./config/key";
+import cors from "cors";
 
 const port = 5000;
 
@@ -14,12 +15,13 @@ const port = 5000;
   });
 
   const app = express();
+  app.use(cors());
   await server.start();
   server.applyMiddleware({
     app,
     path: "/graphql",
     cors: {
-      origin: ["https://localhost:3000", "https://studio.apollographql.com"],
+      origin: "*",
       credentials: true,
     },
   });
