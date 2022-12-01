@@ -1,42 +1,53 @@
-import { useQuery } from "@apollo/client";
-import { GET_PRODUCTS, Products } from "../graphql/products";
+import { useMutation, useQuery } from "@apollo/client";
+import { SyntheticEvent, useState } from "react";
+import { ADD_PRODUCT, GET_PRODUCTS, Products } from "../graphql/products";
 
 type Props = {};
 
+/*
+  {
+    addProduct: {
+      category: "콜라";
+      createdAt: "2022. 12. 2.";
+      description: "제로펩시 100개";
+      imageUrl: "https://shopping-phinf.pstatic.net/main_2706118/27061187522.20210507150752.jpg?type=f640";
+      price: 100000;
+      title: "제로펩시100개";
+      __typename: "Product";
+      _id: "63890c79ec108257fa95d00b";
+    }
+  }
+*/
+
+const addProductCompleted = (data: any) => {
+  alert(`${data.addProduct.title}가 추가되었습니다.`);
+};
+
 const Admin = (props: Props) => {
+  const [inputs, setInputs] = useState({
+    title: "",
+    imageUrl: "",
+    price: "",
+    description: "",
+    category: "콜라",
+  });
+
+  const [addProduct, { data, loading, error }] = useMutation(ADD_PRODUCT, {
+    onCompleted: addProductCompleted,
+  });
+
+  const handleChange = (e: SyntheticEvent) => {
+    const { name, value } = e.target as HTMLInputElement;
+    setInputs({
+      ...inputs,
+      [name]: ["price"].includes(name) ? Number(value) : value,
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const title = (
-      e.currentTarget.elements.namedItem("title") as HTMLInputElement
-    ).value;
-    const imageUrl = (
-      e.currentTarget.elements.namedItem("imageUrl") as HTMLInputElement
-    ).value;
-    const price = (
-      e.currentTarget.elements.namedItem("price") as HTMLInputElement
-    ).value;
-    const description = (
-      e.currentTarget.elements.namedItem("description") as HTMLInputElement
-    ).value;
-    const category = (
-      e.currentTarget.elements.namedItem("category") as HTMLInputElement
-    ).value;
-
-    console.log(
-      "title",
-      title,
-      "imageUrl",
-      imageUrl,
-      "price",
-      price,
-      "description",
-      description,
-      "category",
-      category
-    );
+    addProduct({ variables: inputs });
   };
-  const { data, loading, error } = useQuery<Products>(GET_PRODUCTS);
-  console.log(data);
 
   return (
     <div className="mt-32 w-96 mx-auto h-screen">
@@ -53,8 +64,11 @@ const Admin = (props: Props) => {
             <input
               type="text"
               id="title"
+              name="title"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="상품명"
+              onChange={handleChange}
+              value={inputs.title}
               required
             />
           </div>
@@ -69,8 +83,11 @@ const Admin = (props: Props) => {
             <input
               type="url"
               id="imageUrl"
+              name="imageUrl"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="이미지 URL"
+              onChange={handleChange}
+              value={inputs.imageUrl}
               required
             />
           </div>
@@ -84,8 +101,12 @@ const Admin = (props: Props) => {
             <input
               type="number"
               id="price"
+              name="price"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="가격"
+              min={0}
+              onChange={handleChange}
+              value={inputs.price}
               required
             />
           </div>
@@ -100,8 +121,11 @@ const Admin = (props: Props) => {
           <input
             type="textarea"
             id="description"
+            name="description"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="상세 설명"
+            onChange={handleChange}
+            value={inputs.description}
             required
           />
         </div>
@@ -111,7 +135,13 @@ const Admin = (props: Props) => {
         >
           카테고리
         </label>
-        <select className="border-2 mr-3" name="category" id="category">
+        <select
+          className="border-2 mr-3"
+          name="category"
+          id="category"
+          onChange={handleChange}
+          value={inputs.category}
+        >
           <option value="음료">음료</option>
           <option value="빵">빵</option>
           <option value="과자">과자</option>

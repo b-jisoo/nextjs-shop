@@ -29,3 +29,42 @@ export const GET_PRODUCTS = gql`
     }
   }
 `;
+// export const GET_PRODUCT = gql`
+//   query GET_PRODUCT($id: ID!) {
+//     products(_id: $id) {
+//       _id
+//       imageUrl
+//       price
+//       title
+//       description
+//       createdAt
+//       category
+//     }
+//   }
+// `;
+
+export const ADD_PRODUCT = gql`
+  mutation ADD_PRODUCT(
+    $imageUrl: String!
+    $price: Int!
+    $title: String!
+    $description: String!
+    $category: String!
+  ) {
+    addProduct(
+      imageUrl: $imageUrl
+      price: $price
+      title: $title
+      description: $description
+      category: $category
+    ) {
+      _id
+      imageUrl
+      price
+      title
+      description
+      category
+      createdAt
+    }
+  }
+`;
