@@ -68,3 +68,30 @@ export const ADD_PRODUCT = gql`
     }
   }
 `;
+export const UPDATE_PRODUCT = gql`
+  mutation UPDATE_PRODUCT(
+    $id: ID!
+    $imageUrl: String!
+    $price: Int!
+    $title: String!
+    $description: String!
+    $category: String!
+  ) {
+    updateProduct(
+      id: $id
+      imageUrl: $imageUrl
+      price: $price
+      title: $title
+      description: $description
+      category: $category
+    ) {
+      _id
+      imageUrl
+      price
+      title
+      description
+      category
+      createdAt
+    }
+  }
+`;

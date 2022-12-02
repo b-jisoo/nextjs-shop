@@ -10,13 +10,11 @@ const productSchema = gql`
     createdAt: String
     category: String!
   }
-
   extend type Query {
     products: [Product!]
     product(id: ID!): Product!
     productFiltered(category: String!): [Product!]
   }
-
   extend type Mutation {
     addProduct(
       imageUrl: String!
