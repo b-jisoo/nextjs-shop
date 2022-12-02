@@ -1,10 +1,12 @@
 import { useMutation } from "@apollo/client";
 import React, { SyntheticEvent, useState } from "react";
-import { Product, UPDATE_PRODUCT } from "../../../graphql/products";
+import {
+  DELETE_PRODUCT,
+  Product,
+  UPDATE_PRODUCT,
+} from "../../../graphql/products";
 
-const updateProductCompleted = (data: any) => {
-  alert(`${data.updateProduct.title}로 변경되었습니다.`);
-};
+type Props = {};
 
 const Item = (props: Product) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -16,15 +18,30 @@ const Item = (props: Product) => {
     description: props.description,
     category: props.category,
   });
+
+  const updateProductCompleted = (data: any) => {
+    alert(`${data.updateProduct.title}로 변경되었습니다.`);
+  };
+  const deleteProductCompleted = (data: any) => {
+    alert(`삭제되었습니다`);
+  };
+
   const [updateProduct, { data, loading, error }] = useMutation(
     UPDATE_PRODUCT,
     {
       onCompleted: updateProductCompleted,
     }
   );
+  const [deleteProduct] = useMutation(DELETE_PRODUCT, {
+    onCompleted: deleteProductCompleted,
+  });
 
   const handleClickBttonn = () => {
     setIsEditing(!isEditing);
+  };
+  const handleDeleteProduct = () => {
+    if (confirm("이 상품을 삭제하시겠습니까?"))
+      deleteProduct({ variables: { id: inputs.id } });
   };
 
   const handleChange = (e: SyntheticEvent) => {
@@ -168,7 +185,10 @@ const Item = (props: Product) => {
       <button className="border-2 w-32 mx-auto " onClick={handleClickBttonn}>
         수정
       </button>
-      <button className="border-2 w-32 mx-auto text-white bg-red-700 hover:bg-red-800 ">
+      <button
+        className="border-2 w-32 mx-auto text-white bg-red-700 hover:bg-red-800 "
+        onClick={handleDeleteProduct}
+      >
         삭제
       </button>
     </li>

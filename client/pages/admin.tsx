@@ -8,7 +8,6 @@ type Props = {};
 const Admin = (props: Props) => {
   const { data, loading, error, refetch } = useQuery<Products>(GET_PRODUCTS);
   if (!data) return null;
-  console.log(data);
   return (
     <>
       <AddForm refetchProducts={refetch} />
