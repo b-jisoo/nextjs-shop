@@ -2,7 +2,9 @@ import { useMutation } from "@apollo/client";
 import React, { SyntheticEvent, useState } from "react";
 import { ADD_PRODUCT } from "../../../graphql/products";
 
-type Props = {};
+type Props = {
+  refetchProducts: () => void;
+};
 
 /*
   {
@@ -19,10 +21,6 @@ type Props = {};
   }
 */
 
-const addProductCompleted = (data: any) => {
-  alert(`${data.addProduct.title}가 추가되었습니다.`);
-};
-
 const AddForm = (props: Props) => {
   const [inputs, setInputs] = useState({
     title: "",
@@ -31,6 +29,11 @@ const AddForm = (props: Props) => {
     description: "",
     category: "콜라",
   });
+
+  const addProductCompleted = (data: any) => {
+    alert(`${data.addProduct.title}가 추가되었습니다.`);
+    props.refetchProducts();
+  };
 
   const [addProduct, { data, loading, error }] = useMutation(ADD_PRODUCT, {
     onCompleted: addProductCompleted,

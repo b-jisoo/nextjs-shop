@@ -5,14 +5,11 @@ import Item from "./item";
 
 type Props = {};
 
-const List = (props: Props) => {
-  const { data, loading, error } = useQuery<Products>(GET_PRODUCTS);
-  console.log(data);
-
+const List = (props: Products) => {
   return (
     <>
       <ul className="grid grid-cols-4 gap-[10px]  px-10">
-        {data?.products.map((product, index) => (
+        {props.products.map((product, index) => (
           <Item {...product} key={index} />
         ))}
       </ul>

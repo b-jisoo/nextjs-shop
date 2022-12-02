@@ -25,7 +25,7 @@ const productResolver: Resolver = {
         title,
         description,
         category,
-        createdAt: new Date().toLocaleDateString(),
+        createdAt: new Date().toISOString(),
       });
       const res = await createProduct.save(); // 몽고디비에 저장
       return {
