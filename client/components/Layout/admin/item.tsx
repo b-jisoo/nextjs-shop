@@ -165,9 +165,11 @@ const Item = (props: Product) => {
         <img className="mx-auto" src={props.imageUrl} />
         <span className="product-item__price">₩{props.price}</span>
       </a>
-      <button className="border-2 w-32 mx-auto ">담기</button>
       <button className="border-2 w-32 mx-auto " onClick={handleClickBttonn}>
         수정
+      </button>
+      <button className="border-2 w-32 mx-auto text-white bg-red-700 hover:bg-red-800 ">
+        삭제
       </button>
     </li>
   );
