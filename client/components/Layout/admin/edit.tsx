@@ -1,41 +1,40 @@
 import { useMutation } from "@apollo/client";
 import React, { SyntheticEvent, useState } from "react";
-import { ADD_PRODUCT, GET_PRODUCTS_ID } from "../../../graphql/products";
+import { Product, UPDATE_PRODUCT } from "../../../graphql/products";
 
-type Props = {};
+type Props = {
+  doneEditing: () => void;
+  product: {
+    _id: string;
+    imageUrl: string;
+    price: number;
+    title: string;
+    description: string;
+    createdAt: number;
+    category: string;
+  };
+};
 
-/*
-  {
-    addProduct: {
-      category: "콜라";
-      createdAt: "2022. 12. 2.";
-      description: "제로펩시 100개";
-      imageUrl: "https://shopping-phinf.pstatic.net/main_2706118/27061187522.20210507150752.jpg?type=f640";
-      price: 100000;
-      title: "제로펩시100개";
-      __typename: "Product";
-      _id: "63890c79ec108257fa95d00b";
-    }
-  }
-*/
-
-const AddForm = (props: Props) => {
+const EditProduct = (props: Props) => {
   const [inputs, setInputs] = useState({
-    title: "",
-    imageUrl: "",
-    price: "",
-    description: "",
-    category: "콜라",
+    id: props.product._id,
+    title: props.product.title,
+    imageUrl: props.product.imageUrl,
+    price: props.product.price,
+    description: props.product.description,
+    category: props.product.category,
   });
 
-  const addProductCompleted = (data: any) => {
-    alert(`${data.addProduct.title}가 추가되었습니다.`);
+  const updateProductCompleted = (data: any) => {
+    alert(`${data.updateProduct.title}로 변경되었습니다.`);
   };
 
-  const [addProduct, { data, loading, error }] = useMutation(ADD_PRODUCT, {
-    onCompleted: addProductCompleted,
-    refetchQueries: [{ query: GET_PRODUCTS_ID }],
-  });
+  const [updateProduct, { data, loading, error }] = useMutation(
+    UPDATE_PRODUCT,
+    {
+      onCompleted: updateProductCompleted,
+    }
+  );
 
   const handleChange = (e: SyntheticEvent) => {
     const { name, value } = e.target as HTMLInputElement;
@@ -47,12 +46,13 @@ const AddForm = (props: Props) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addProduct({ variables: inputs });
+    console.log(inputs);
+    updateProduct({ variables: inputs });
+    props.doneEditing();
   };
 
   return (
-    <div className="mt-32 w-96 mx-auto mb-20">
-      <div className="mb-10">어드민</div>
+    <li className="border-2 p-5">
       <form onSubmit={handleSubmit}>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
@@ -155,9 +155,15 @@ const AddForm = (props: Props) => {
         >
           등록
         </button>
+        <button
+          className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2"
+          onClick={props.doneEditing}
+        >
+          취소
+        </button>
       </form>
-    </div>
+    </li>
   );
 };
 
-export default AddForm;
+export default EditProduct;
