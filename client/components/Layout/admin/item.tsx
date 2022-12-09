@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
+import Link from "next/link";
 import React, { useState } from "react";
 import {
   DELETE_PRODUCT,
@@ -45,13 +46,13 @@ const Item = (props: Product_id) => {
 
   return (
     <li className="border-2 border-solid flex flex-col text-center justify-center py-4">
-      <a href="/products/6bd42cdd-9976-4bdf-b664-60b11b715258">
+      <Link href={`/products/${data.product._id}`}>
         <p className="font-bold">{data?.product.title}</p>
         <img className="mx-auto" src={data?.product.imageUrl} />
         <span className="product-item__price">
           ₩{data?.product.price.toLocaleString("ko-KR")}
         </span>
-      </a>
+      </Link>
       <button className="border-2 w-32 mx-auto " onClick={handleClickBttonn}>
         수정
       </button>

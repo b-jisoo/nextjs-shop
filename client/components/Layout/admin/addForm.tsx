@@ -19,6 +19,10 @@ type Props = {};
   }
 */
 
+const addProductCompleted = (data: any) => {
+  alert(`${data.addProduct.title}가 추가되었습니다.`);
+};
+
 const AddForm = (props: Props) => {
   const [inputs, setInputs] = useState({
     title: "",
@@ -27,10 +31,6 @@ const AddForm = (props: Props) => {
     description: "",
     category: "콜라",
   });
-
-  const addProductCompleted = (data: any) => {
-    alert(`${data.addProduct.title}가 추가되었습니다.`);
-  };
 
   const [addProduct, { data, loading, error }] = useMutation(ADD_PRODUCT, {
     onCompleted: addProductCompleted,
