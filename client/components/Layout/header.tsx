@@ -86,7 +86,7 @@ const Header = (props: Props) => {
           </div>
           <div>
             <Link
-              href="#"
+              href="cart"
               className=" flex text-sm px-4 py-2 leading-none border rounded bg-white  border-white hover:border-transparent hover:text-gray-200 hover:bg-gray-400 mt-4 lg:mt-0 text-black"
             >
               <Image

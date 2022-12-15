@@ -6,22 +6,23 @@ interface DocumentResult<T> {
 }
 
 interface SchemaType extends DocumentResult<SchemaType> {
-  id: any;
-  amount: string;
-  product: ProductSchema;
+  _id: any;
+  amount: number;
+  product: any;
 }
 
 const cartSchema = new Schema<SchemaType>({
-  id: {
-    type: Schema.Types.ObjectId,
+  product: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "Product",
   },
   amount: {
-    type: String,
+    type: Number,
     required: true,
   },
-  product: Product.schema,
 });
 
-const Cart = mongoose.model("Product", cartSchema);
+const Cart = mongoose.model("Cart", cartSchema);
 
 export { Cart };

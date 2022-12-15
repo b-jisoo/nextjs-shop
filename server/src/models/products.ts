@@ -12,6 +12,7 @@ export interface ProductSchema extends DocumentResult<ProductSchema> {
   price: number;
   createdAt: string | Date;
   category: string;
+  quantity?: number;
 }
 
 const productSchema = new Schema<ProductSchema>({
