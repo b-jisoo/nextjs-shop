@@ -86,7 +86,7 @@ const Cart = (props: Props) => {
                 <span className="font-semibold text-sm">
                   {data.cart
                     .reduce((acc, cur) => {
-                      return acc + cur.product.price;
+                      return acc + cur.product.price * cur.amount;
                     }, 0)
                     .toLocaleString()}
                   원
@@ -109,7 +109,7 @@ const Cart = (props: Props) => {
                   <span>
                     {data.cart
                       .reduce((acc, cur) => {
-                        return acc + cur.product.price;
+                        return acc + cur.product.price * cur.amount;
                       }, 0)
                       .toLocaleString()}
                     원

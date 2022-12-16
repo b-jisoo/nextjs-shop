@@ -29,7 +29,7 @@ const AddForm = (props: Props) => {
     imageUrl: "",
     price: "",
     description: "",
-    category: "콜라",
+    category: "음료",
   });
 
   const [addProduct, { data, loading, error }] = useMutation(ADD_PRODUCT, {
