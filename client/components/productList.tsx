@@ -8,6 +8,7 @@ type Props = {};
 const ProductList = (props: Props) => {
   const { data, loading, error, refetch } =
     useQuery<Products_id>(GET_PRODUCTS_ID);
+
   return (
     <>
       <div className=" flex justify-center items-center h-32 mt-16 border-b-2 border-gray-700">

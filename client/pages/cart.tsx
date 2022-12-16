@@ -1,9 +1,32 @@
+import { useQuery } from "@apollo/client";
 import Link from "next/link";
 import React from "react";
+import CartList from "../components/Layout/cart/cartList";
+import { GET_CARTS } from "../graphql/cart";
+
+export type CartType = {
+  cart: Item[];
+};
+export type Item = {
+  amount: number;
+  product: {
+    _id: string;
+    imageUrl: string;
+    price: number;
+    title: string;
+    description: string;
+    createdAt: number;
+    category: string;
+  };
+  _id: string;
+};
 
 type Props = {};
 
 const Cart = (props: Props) => {
+  const { data, loading, error, refetch } = useQuery<CartType>(GET_CARTS);
+  if (!data) return null;
+  console.log(data);
   return (
     <section className="mt-20 min-h-screen bg-gray-100">
       <div className="">
@@ -29,50 +52,7 @@ const Cart = (props: Props) => {
               </div>
 
               {/* <!-- product --> */}
-              <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-                <div className="flex w-2/5">
-                  <div className="w-20">
-                    <img
-                      className="h-24"
-                      src="https://drive.google.com/uc?id=18KkAVkGFvaGNqPy2DIvTqmUH_nk39o3z"
-                      alt=""
-                    />
-                  </div>
-                  <div className="flex flex-col justify-between ml-4 flex-grow">
-                    <span className="font-bold text-sm">Iphone 6S</span>
-                    <span className="text-red-500 text-xs">Apple</span>
-                    <a
-                      href="#"
-                      className="font-semibold hover:text-red-500 text-gray-500 text-xs"
-                    >
-                      Remove
-                    </a>
-                  </div>
-                </div>
-                <div className="flex justify-center w-1/5">
-                  <svg
-                    className="fill-current text-gray-600 w-3"
-                    viewBox="0 0 448 512"
-                  >
-                    <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                  </svg>
-
-                  <span className="mx-2 border text-center w-8"> 1 </span>
-
-                  <svg
-                    className="fill-current text-gray-600 w-3"
-                    viewBox="0 0 448 512"
-                  >
-                    <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                  </svg>
-                </div>
-                <span className="text-center w-1/5 font-semibold text-sm">
-                  $400.00
-                </span>
-                <span className="text-center w-1/5 font-semibold text-sm">
-                  $400.00
-                </span>
-              </div>
+              <CartList {...data} />
               {/* <!-- product --> */}
               <Link
                 href="/products"
@@ -92,13 +72,25 @@ const Cart = (props: Props) => {
               <h1 className="font-semibold text-2xl border-b pb-8">결제정보</h1>
               <div className="flex justify-between mt-10 mb-5">
                 <span className="font-semibold text-sm uppercase">상품수</span>
-                <span className="font-semibold text-sm">1개</span>
+                <span className="font-semibold text-sm">
+                  {data.cart.reduce((acc, cur) => {
+                    return acc + cur.amount;
+                  }, 0)}
+                  개
+                </span>
               </div>
               <div className="flex justify-between mb-5">
                 <span className="font-semibold text-sm uppercase">
                   상품금액
                 </span>
-                <span className="font-semibold text-sm">120원</span>
+                <span className="font-semibold text-sm">
+                  {data.cart
+                    .reduce((acc, cur) => {
+                      return acc + cur.product.price;
+                    }, 0)
+                    .toLocaleString()}
+                  원
+                </span>
               </div>
               <div className="flex justify-between mb-5">
                 <span className="font-semibold text-sm uppercase">
@@ -114,7 +106,14 @@ const Cart = (props: Props) => {
               <div className="border-t mt-8">
                 <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                   <span>총 결제금액</span>
-                  <span>120원</span>
+                  <span>
+                    {data.cart
+                      .reduce((acc, cur) => {
+                        return acc + cur.product.price;
+                      }, 0)
+                      .toLocaleString()}
+                    원
+                  </span>
                 </div>
                 <button className="bg-blue-500 font-semibold hover:bg-blue-600 py-3 text-sm text-white uppercase w-full">
                   구매하기

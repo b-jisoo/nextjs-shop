@@ -4,6 +4,9 @@ import cartIcon from "../../public/cart_icon.png";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useQuery } from "@apollo/client";
+import { CartType } from "../../pages/cart";
+import { GET_CARTS } from "../../graphql/cart";
 
 type Props = {};
 
@@ -17,6 +20,8 @@ const Header = (props: Props) => {
   //   });
   // });
 
+  const { data, loading, error, refetch } = useQuery<CartType>(GET_CARTS);
+  if (!data) return null;
   const handleClick = () => {
     setOpenMenu(!openMenu);
   };
@@ -78,7 +83,7 @@ const Header = (props: Props) => {
               Product
             </Link>
             <Link
-              href="admin"
+              href="/admin"
               className="block mt-4 lg:inline-block lg:mt-0  hover:text-gray-400"
             >
               Admin
@@ -86,7 +91,7 @@ const Header = (props: Props) => {
           </div>
           <div>
             <Link
-              href="cart"
+              href="/cart"
               className=" flex text-sm px-4 py-2 leading-none border rounded bg-white  border-white hover:border-transparent hover:text-gray-200 hover:bg-gray-400 mt-4 lg:mt-0 text-black"
             >
               <Image
@@ -95,7 +100,11 @@ const Header = (props: Props) => {
                 width={15}
                 className="mr-1"
               />
-              Cart (0)
+              Cart (
+              {data.cart.reduce((acc, cur) => {
+                return acc + cur.amount;
+              }, 0)}
+              )
             </Link>
           </div>
         </div>

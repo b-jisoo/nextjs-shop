@@ -1,6 +1,7 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { SyntheticEvent } from "react";
+import { ADD_CART, GET_CARTS } from "../../graphql/cart";
 import { GET_PRODUCT, Product } from "../../graphql/products";
 
 type Props = {};
@@ -14,6 +15,13 @@ const ProductDetail = (props: Props) => {
     variables: { id },
   });
   if (!data) return null;
+  const [addCart, {}] = useMutation(ADD_CART, {
+    refetchQueries: [{ query: GET_CARTS }],
+  });
+
+  const handleAddCart = (e: SyntheticEvent) => {
+    addCart({ variables: { productId: data.product._id } });
+  };
 
   return (
     <section className="text-gray-700 body-font overflow-hidden bg-white">
@@ -40,8 +48,11 @@ const ProductDetail = (props: Props) => {
               <span className="title-font font-medium text-2xl text-gray-900">
                 ₩{data?.product.price.toLocaleString("ko-KR")}
               </span>
-              <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-                Button
+              <button
+                className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                onClick={handleAddCart}
+              >
+                담기
               </button>
               <button className=" bg-gray-200 py-2 px-6 border-0 inline-flex items-center justify-center text-gray-500 ml-4 rounded hover:bg-gray-300">
                 카트로 이동

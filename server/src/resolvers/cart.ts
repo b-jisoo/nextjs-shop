@@ -19,16 +19,14 @@ const cartResolver: Resolver = {
           { product: productId },
           { $inc: { amount: 1 } }
         );
-
-        return await Cart.find({ product: productId }).populate("product");
       } else {
         const createCart = new Cart({
           amount: 1,
           product: productRef[0],
         });
         const res = await createCart.save();
-        return { ...res._doc };
       }
+      return await Cart.find({ product: productId }).populate("product");
     },
     updateCart: () => {},
     deleteCart: () => {},
