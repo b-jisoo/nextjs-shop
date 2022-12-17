@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { SyntheticEvent } from "react";
 import { ADD_CART, GET_CARTS } from "../../graphql/cart";
@@ -14,11 +15,11 @@ const ProductDetail = (props: Props) => {
   const { data, loading, error, refetch } = useQuery<Product>(GET_PRODUCT, {
     variables: { id },
   });
-  if (!data) return null;
   const [addCart, {}] = useMutation(ADD_CART, {
     refetchQueries: [{ query: GET_CARTS }],
   });
 
+  if (!data) return null;
   const handleAddCart = (e: SyntheticEvent) => {
     addCart({ variables: { productId: data.product._id } });
   };
@@ -54,9 +55,11 @@ const ProductDetail = (props: Props) => {
               >
                 담기
               </button>
-              <button className=" bg-gray-200 py-2 px-6 border-0 inline-flex items-center justify-center text-gray-500 ml-4 rounded hover:bg-gray-300">
-                카트로 이동
-              </button>
+              <Link href="/cart">
+                <button className=" bg-gray-200 py-2 px-6 border-0 inline-flex items-center justify-center text-gray-500 ml-4 rounded hover:bg-gray-300">
+                  카트로 이동
+                </button>
+              </Link>
             </div>
           </div>
         </div>
