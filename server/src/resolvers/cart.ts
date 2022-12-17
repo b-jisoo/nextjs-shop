@@ -30,7 +30,6 @@ const cartResolver: Resolver = {
     },
     decreaseCart: async (parent, { cartId }) => {
       const cart = await Cart.find({ _id: cartId }).populate("product");
-      console.log(cart[0].amount);
       if (cart[0].amount === 1) {
         const res = await Cart.deleteOne({ _id: cartId });
         return cart;
@@ -42,13 +41,12 @@ const cartResolver: Resolver = {
         return await Cart.find({ _id: cartId }).populate("product");
       }
     },
-    deleteCart: () => {},
+    deleteCart: async (parnt, { cartId }) => {
+      const wasDelete = (await Cart.deleteOne({ _id: cartId })).deletedCount;
+      return wasDelete;
+    },
     executePay: () => {},
   },
-  // CartItem: {
-  //   product: async (cartItem, args) =>
-  //     Product.find((product: any) => product._id === cartItem._id),
-  // },
 };
 
 export default cartResolver;

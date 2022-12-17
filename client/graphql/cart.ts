@@ -52,3 +52,8 @@ export const DECREASE_CART = gql`
     }
   }
 `;
+export const DELETE_CART = gql`
+  mutation DELETE_CART($cartId: ID!) {
+    deleteCart(cartId: $cartId)
+  }
+`;
