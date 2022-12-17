@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
 import React, { SyntheticEvent } from "react";
-import { ADD_CART, GET_CARTS } from "../../../graphql/cart";
+import { ADD_CART, DECREASE_CART, GET_CARTS } from "../../../graphql/cart";
 import { Item } from "../../../pages/cart";
 
 type Props = {};
@@ -9,9 +9,16 @@ const CartItem = (props: Item) => {
   const [addCart, { data }] = useMutation(ADD_CART, {
     refetchQueries: [{ query: GET_CARTS }],
   });
+  console.log(data);
+  const [decreaseCart, {}] = useMutation(DECREASE_CART, {
+    refetchQueries: [{ query: GET_CARTS }],
+  });
 
   const handleAddCart = (e: SyntheticEvent) => {
     addCart({ variables: { productId: props.product._id } });
+  };
+  const handleDecreaseCart = (e: SyntheticEvent) => {
+    decreaseCart({ variables: { cartId: props._id } });
   };
 
   return (
@@ -32,7 +39,11 @@ const CartItem = (props: Item) => {
         </div>
       </div>
       <div className="flex justify-center w-1/5">
-        <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+        <svg
+          className="fill-current text-gray-600 w-3"
+          viewBox="0 0 448 512"
+          onClick={handleDecreaseCart}
+        >
           <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
         </svg>
 

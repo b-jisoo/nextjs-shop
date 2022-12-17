@@ -35,3 +35,20 @@ export const ADD_CART = gql`
     }
   }
 `;
+export const DECREASE_CART = gql`
+  mutation DECREASE_CART($cartId: ID!) {
+    decreaseCart(cartId: $cartId) {
+      _id
+      amount
+      product {
+        _id
+        imageUrl
+        price
+        title
+        description
+        createdAt
+        category
+      }
+    }
+  }
+`;
