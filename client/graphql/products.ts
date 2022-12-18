@@ -59,6 +59,13 @@ export const GET_PRODUCT = gql`
     }
   }
 `;
+export const GET_PRODUCT_FILTER_ID = gql`
+  query GET_PRODUCT_FILTER_ID($category: String!) {
+    productFilter(category: $category) {
+      _id
+    }
+  }
+`;
 
 export const ADD_PRODUCT = gql`
   mutation ADD_PRODUCT(

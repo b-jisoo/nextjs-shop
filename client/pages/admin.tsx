@@ -1,12 +1,7 @@
 import { useQuery } from "@apollo/client";
 import AddForm from "../components/Layout/admin/addForm";
 import List from "../components/Layout/admin/list";
-import {
-  GET_PRODUCTS,
-  GET_PRODUCTS_ID,
-  Products,
-  Products_id,
-} from "../graphql/products";
+import { GET_PRODUCTS_ID, Products, Products_id } from "../graphql/products";
 
 type Props = {};
 

@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
-import { GET_PRODUCTS, Products, Products_id } from "../../../graphql/products";
+import { Products, Products_id } from "../../../graphql/products";
 import Item from "./item";
 
 type Props = {};

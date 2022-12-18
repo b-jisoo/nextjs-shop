@@ -46,7 +46,6 @@ const EditProduct = (props: Props) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(inputs);
     updateProduct({ variables: inputs });
     props.doneEditing();
   };

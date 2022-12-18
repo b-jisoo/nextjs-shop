@@ -13,7 +13,7 @@ const productSchema = gql`
   extend type Query {
     products: [Product!]
     product(id: ID!): Product!
-    productFiltered(category: String!): [Product!]
+    productFilter(category: String!): [Product!]
   }
   extend type Mutation {
     addProduct(

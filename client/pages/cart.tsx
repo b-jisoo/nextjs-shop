@@ -26,7 +26,6 @@ type Props = {};
 const Cart = (props: Props) => {
   const { data, loading, error, refetch } = useQuery<CartType>(GET_CARTS);
   if (!data) return null;
-  console.log(data);
   return (
     <section className="mt-20 min-h-screen bg-gray-100">
       <div className="">

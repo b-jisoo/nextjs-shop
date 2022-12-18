@@ -9,8 +9,12 @@ const productResolver: Resolver = {
     product: async (parent, { id }) => {
       return await Product.findById(id);
     },
-    productFiltered: async (parent, { category }) => {
-      return await Product.find({ category }).sort({ createdAt: -1 });
+    productFilter: async (parent, { category }) => {
+      if (category === "전체") {
+        return await Product.find().sort({ createdAt: -1 });
+      } else {
+        return await Product.find({ category }).sort({ createdAt: -1 });
+      }
     },
   },
 
