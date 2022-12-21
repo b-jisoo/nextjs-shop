@@ -8,6 +8,12 @@ import CartItem from "./cartItem";
 type Props = {};
 
 const CartList = (props: CartType) => {
+  if (props.cart.length === 0)
+    return (
+      <div className="flex justify-center items-center text-lg h-80">
+        상품이 없습니다
+      </div>
+    );
   return (
     <>
       {props.cart.map((item, i) => (

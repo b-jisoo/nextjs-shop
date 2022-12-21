@@ -10,6 +10,7 @@ const ProductItem = (props: Product_id) => {
   const { data, loading, error, refetch } = useQuery<Product>(GET_PRODUCT, {
     variables: { id: props._id },
   });
+  console.log(props);
 
   const [addCart, {}] = useMutation(ADD_CART, {
     refetchQueries: [{ query: GET_CARTS }],

@@ -1,6 +1,11 @@
 import { useMutation } from "@apollo/client";
 import React, { SyntheticEvent, useState } from "react";
-import { Product, UPDATE_PRODUCT } from "../../../graphql/products";
+import {
+  GET_PRODUCT_FILTER_ID,
+  Product,
+  UPDATE_PRODUCT,
+} from "../../../graphql/products";
+import { ALL_PRODUCTS } from "../../../pages/admin";
 
 type Props = {
   doneEditing: () => void;
@@ -33,6 +38,9 @@ const EditProduct = (props: Props) => {
     UPDATE_PRODUCT,
     {
       onCompleted: updateProductCompleted,
+      refetchQueries: [
+        { query: GET_PRODUCT_FILTER_ID, variables: { category: ALL_PRODUCTS } },
+      ],
     }
   );
 

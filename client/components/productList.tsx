@@ -1,16 +1,8 @@
 import { useQuery } from "@apollo/client";
 import React, { SyntheticEvent, useState } from "react";
-import {
-  GET_PRODUCTS_ID,
-  GET_PRODUCT_FILTER_ID,
-  Products_id,
-  Product_id,
-} from "../graphql/products";
+import { GET_PRODUCT_FILTER_ID, ProductFilerId } from "../graphql/products";
 import ProductItem from "./productItem";
 
-type ProductFilerId = {
-  productFilter: Product_id[];
-};
 type Props = {};
 
 const ProductList = (props: Props) => {

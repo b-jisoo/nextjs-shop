@@ -1,15 +1,14 @@
-import { useQuery } from "@apollo/client";
 import React from "react";
-import { Products, Products_id } from "../../../graphql/products";
+import { ProductFilerId } from "../../../graphql/products";
 import Item from "./item";
 
 type Props = {};
 
-const List = (props: Products_id) => {
+const List = (props: ProductFilerId) => {
   return (
     <>
       <ul className="grid grid-cols-4 gap-[10px]  px-10">
-        {props.products.map((product, index) => (
+        {props.productFilter.map((product, index) => (
           <Item {...product} key={index} />
         ))}
       </ul>

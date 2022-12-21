@@ -5,9 +5,11 @@ import {
   DELETE_PRODUCT,
   GET_PRODUCT,
   GET_PRODUCTS_ID,
+  GET_PRODUCT_FILTER_ID,
   Product,
   Product_id,
 } from "../../../graphql/products";
+import { ALL_PRODUCTS } from "../../../pages/admin";
 import EditProduct from "./edit";
 
 type Props = {};
@@ -25,7 +27,9 @@ const Item = (props: Product_id) => {
 
   const [deleteProduct] = useMutation(DELETE_PRODUCT, {
     onCompleted: deleteProductCompleted,
-    refetchQueries: [{ query: GET_PRODUCTS_ID }],
+    refetchQueries: [
+      { query: GET_PRODUCT_FILTER_ID, variables: { category: ALL_PRODUCTS } },
+    ],
   });
 
   const handleClickBttonn = () => {

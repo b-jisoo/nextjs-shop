@@ -22,6 +22,10 @@ export type Product_id = {
   _id: string;
 };
 
+export type ProductFilerId = {
+  productFilter: Product_id[];
+};
+
 export type Products_id = {
   products: Product_id[];
 };

@@ -1,13 +1,18 @@
 import { useQuery } from "@apollo/client";
 import AddForm from "../components/Layout/admin/addForm";
 import List from "../components/Layout/admin/list";
-import { GET_PRODUCTS_ID, Products, Products_id } from "../graphql/products";
+import { GET_PRODUCT_FILTER_ID, ProductFilerId } from "../graphql/products";
 
 type Props = {};
+export const ALL_PRODUCTS = "전체";
 
 const Admin = (props: Props) => {
-  const { data, loading, error, refetch } =
-    useQuery<Products_id>(GET_PRODUCTS_ID);
+  const { data, loading, error, refetch } = useQuery<ProductFilerId>(
+    GET_PRODUCT_FILTER_ID,
+    {
+      variables: { category: ALL_PRODUCTS },
+    }
+  );
 
   if (!data) return null;
   return (

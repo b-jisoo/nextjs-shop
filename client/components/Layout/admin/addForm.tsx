@@ -1,6 +1,11 @@
 import { useMutation } from "@apollo/client";
 import React, { SyntheticEvent, useState } from "react";
-import { ADD_PRODUCT, GET_PRODUCTS_ID } from "../../../graphql/products";
+import {
+  ADD_PRODUCT,
+  GET_PRODUCTS_ID,
+  GET_PRODUCT_FILTER_ID,
+} from "../../../graphql/products";
+import { ALL_PRODUCTS } from "../../../pages/admin";
 
 type Props = {};
 
@@ -34,7 +39,9 @@ const AddForm = (props: Props) => {
 
   const [addProduct, { data, loading, error }] = useMutation(ADD_PRODUCT, {
     onCompleted: addProductCompleted,
-    refetchQueries: [{ query: GET_PRODUCTS_ID }],
+    refetchQueries: [
+      { query: GET_PRODUCT_FILTER_ID, variables: { category: ALL_PRODUCTS } },
+    ],
   });
 
   const handleChange = (e: SyntheticEvent) => {
