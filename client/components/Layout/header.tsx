@@ -21,6 +21,7 @@ const Header = (props: Props) => {
   // });
 
   const { data, loading, error, refetch } = useQuery<CartType>(GET_CARTS);
+  console.log(data);
   if (!data) return null;
   const handleClick = () => {
     setOpenMenu(!openMenu);
@@ -28,14 +29,7 @@ const Header = (props: Props) => {
 
   return (
     <header>
-      <nav
-        className="flex items-center justify-between flex-wrap p-6 fixed top-0 w-full bg-white z-[99] shadow-md text-black "
-        // className={` ${
-        //   isActive
-        //     ? "lg:bg-white shadow-md text-black"
-        //     : "lg:bg-transparent text-white"
-        // } flex items-center justify-between flex-wrap p-6 fixed top-0 w-full bg-white z-[99] `}
-      >
+      <nav className="flex items-center justify-between flex-wrap p-6 fixed top-0 w-full bg-white z-[99] shadow-md text-black ">
         <div className="flex items-center flex-shrink-0  mr-6">
           <Image
             src={vercel}

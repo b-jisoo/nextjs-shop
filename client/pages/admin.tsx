@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import AddForm from "../components/Layout/admin/addForm";
 import List from "../components/Layout/admin/list";
+import Seo from "../components/Seo";
 import { GET_PRODUCT_FILTER_ID, ProductFilerId } from "../graphql/products";
 
 type Props = {};
@@ -17,6 +18,7 @@ const Admin = (props: Props) => {
   if (!data) return null;
   return (
     <>
+      <Seo />
       <AddForm />
       <List {...data} />
     </>

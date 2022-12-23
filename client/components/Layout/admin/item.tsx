@@ -52,7 +52,7 @@ const Item = (props: Product_id) => {
     <li className="border-2 border-solid flex flex-col text-center justify-center py-4">
       <Link href={`/products/${data.product._id}`}>
         <p className="font-bold">{data?.product.title}</p>
-        <img className="mx-auto" src={data?.product.imageUrl} />
+        <img className="mx-auto w-[200px]" src={data?.product.imageUrl} />
         <span className="product-item__price">
           ₩{data?.product.price.toLocaleString("ko-KR")}
         </span>

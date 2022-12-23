@@ -62,7 +62,7 @@ const ProductList = (props: Props) => {
           아이스크림
         </button>
       </div>
-      <ul className="grid grid-cols-4 gap-[10px] mt-20 px-10">
+      <ul className="grid grid-cols-4 gap-[10px] mt-20 px-10  min-w-[800px]">
         {data.productFilter.map((product, index) => (
           <ProductItem {...product} key={index} />
         ))}

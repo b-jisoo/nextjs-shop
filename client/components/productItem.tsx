@@ -10,7 +10,6 @@ const ProductItem = (props: Product_id) => {
   const { data, loading, error, refetch } = useQuery<Product>(GET_PRODUCT, {
     variables: { id: props._id },
   });
-  console.log(props);
 
   const [addCart, {}] = useMutation(ADD_CART, {
     refetchQueries: [{ query: GET_CARTS }],
@@ -26,7 +25,7 @@ const ProductItem = (props: Product_id) => {
       <li className="border-2 border-solid flex flex-col text-center justify-center py-4">
         <Link href={`/products/${data.product._id}`}>
           <p className="">{data.product.title}</p>
-          <img className="mx-auto" src={data.product.imageUrl} />
+          <img className="mx-auto w-[200px]" src={data.product.imageUrl} />
         </Link>
         <span className="product-item__price">
           ₩{data.product.price.toLocaleString("ko-KR")}
