@@ -4,16 +4,16 @@ import { Resolver } from "./types";
 const productResolver: Resolver = {
   Query: {
     products: async (parent, {}) => {
-      return await Product.find().sort({ createdAt: -1 });
+      return await Product.find().sort({ category: -1 });
     },
     product: async (parent, { id }) => {
       return await Product.findById(id);
     },
     productFilter: async (parent, { category }) => {
       if (category === "전체") {
-        return await Product.find().sort({ createdAt: -1 });
+        return await Product.find().sort({ category: -1 });
       } else {
-        return await Product.find({ category }).sort({ createdAt: -1 });
+        return await Product.find({ category }).sort({ category: -1 });
       }
     },
   },
