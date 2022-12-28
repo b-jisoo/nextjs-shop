@@ -6,8 +6,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination:
-          "http://ip-172-31-8-255.ap-northeast-2.compute.internal/:path*",
+        destination: "http://localhost:5000/:path*",
       },
     ];
   },
