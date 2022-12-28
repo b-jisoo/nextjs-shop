@@ -3,7 +3,6 @@ import { ApolloServer } from "apollo-server-express";
 import schema from "./schema";
 import resolvers from "./resolvers";
 import mongoose from "mongoose";
-import config from "./config/key";
 import cors from "cors";
 
 const port = 5000;
@@ -27,7 +26,7 @@ const port = 5000;
   });
 
   const connect = mongoose
-    .connect(config().mongoURI)
+    .connect(`${process.env.MONGO_URI}`)
     .then(() => console.log("MongoDB Connected..."))
     .catch((err) => console.log(err));
 
