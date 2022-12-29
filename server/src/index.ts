@@ -25,8 +25,6 @@ const port = 5000;
     },
   });
 
-  console.log(`process.env.MONGO_URI: ${process.env.MONGO_URI}`);
-
   const connect = mongoose
     .connect(`${process.env.MONGO_URI}`)
     .then(() => console.log("MongoDB Connected..."))
