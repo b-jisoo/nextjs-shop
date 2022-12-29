@@ -245,7 +245,7 @@ const Layout = ({
 ;// CONCATENATED MODULE: ./apollo/apollo-client.ts
 
 const client = new client_.ApolloClient({
-  uri: "http://localhost:5000/graphql",
+  uri: "http://3.36.126.19:5000/graphql",
   cache: new client_.InMemoryCache()
 });
 /* harmony default export */ const apollo_client = (client);
