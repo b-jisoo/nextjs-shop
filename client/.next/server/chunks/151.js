@@ -98,7 +98,7 @@ const ProductItem = props => {
           className: "",
           children: data.product.title
         }), /*#__PURE__*/jsx_runtime_.jsx("img", {
-          className: "mx-auto w-[200px]",
+          className: "mx-auto w-[250px] h-[250px] ",
           src: data.product.imageUrl
         })]
       }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("span", {

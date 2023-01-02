@@ -151,7 +151,6 @@ const Header = props => {
     error,
     refetch
   } = (0,client_.useQuery)(cart/* GET_CARTS */.Rp);
-  console.log(data);
   if (!data) return null;
 
   const handleClick = () => {
