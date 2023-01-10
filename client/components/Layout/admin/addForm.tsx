@@ -1,11 +1,5 @@
-import { useMutation } from "@apollo/client";
 import React, { SyntheticEvent, useState } from "react";
-import {
-  ADD_PRODUCT,
-  GET_PRODUCTS_ID,
-  GET_PRODUCT_FILTER_ID,
-} from "../../../graphql/products";
-import { ALL_PRODUCTS } from "../../../pages/admin";
+import AddAdminProduct from "../../action/admin/addProduct";
 
 type Props = {};
 
@@ -24,10 +18,6 @@ type Props = {};
   }
 */
 
-const addProductCompleted = (data: any) => {
-  alert(`${data.addProduct.title}가 추가되었습니다.`);
-};
-
 const AddForm = (props: Props) => {
   const [inputs, setInputs] = useState({
     title: "",
@@ -37,12 +27,7 @@ const AddForm = (props: Props) => {
     category: "음료",
   });
 
-  const [addProduct, { data, loading, error }] = useMutation(ADD_PRODUCT, {
-    onCompleted: addProductCompleted,
-    refetchQueries: [
-      { query: GET_PRODUCT_FILTER_ID, variables: { category: ALL_PRODUCTS } },
-    ],
-  });
+  const addProduct = AddAdminProduct();
 
   const handleChange = (e: SyntheticEvent) => {
     const { name, value } = e.target as HTMLInputElement;

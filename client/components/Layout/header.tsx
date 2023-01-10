@@ -21,7 +21,6 @@ const Header = (props: Props) => {
   // });
 
   const { data, loading, error, refetch } = useQuery<CartType>(GET_CARTS);
-  console.log(data);
   if (!data) return null;
   const handleClick = () => {
     setOpenMenu(!openMenu);
