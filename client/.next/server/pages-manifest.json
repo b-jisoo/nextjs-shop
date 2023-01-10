@@ -1,8 +1,11 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/admin": "pages/admin.html",
+  "/cart": "pages/cart.html",
+  "/products": "pages/products.html",
+  "/": "pages/index.html",
+  "/products/[...params]": "pages/products/[...params].html",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/admin": "pages/admin.js",
-  "/products": "pages/products.js"
+  "/404": "pages/404.html"
 }
