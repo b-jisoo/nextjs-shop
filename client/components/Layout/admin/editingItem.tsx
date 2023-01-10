@@ -1,11 +1,5 @@
-import { useMutation } from "@apollo/client";
 import React, { SyntheticEvent, useState } from "react";
-import {
-  GET_PRODUCT_FILTER_ID,
-  Product,
-  UPDATE_PRODUCT,
-} from "../../../graphql/products";
-import { ALL_PRODUCTS } from "../../../pages/admin";
+import UpdateProduct from "../../action/admin/updateProduct";
 
 type Props = {
   doneEditing: () => void;
@@ -20,7 +14,7 @@ type Props = {
   };
 };
 
-const EditProduct = (props: Props) => {
+const EditingItem = (props: Props) => {
   const [inputs, setInputs] = useState({
     id: props.product._id,
     title: props.product.title,
@@ -30,19 +24,7 @@ const EditProduct = (props: Props) => {
     category: props.product.category,
   });
 
-  const updateProductCompleted = (data: any) => {
-    alert(`${data.updateProduct.title}로 변경되었습니다.`);
-  };
-
-  const [updateProduct, { data, loading, error }] = useMutation(
-    UPDATE_PRODUCT,
-    {
-      onCompleted: updateProductCompleted,
-      refetchQueries: [
-        { query: GET_PRODUCT_FILTER_ID, variables: { category: ALL_PRODUCTS } },
-      ],
-    }
-  );
+  const updateProduct = UpdateProduct();
 
   const handleChange = (e: SyntheticEvent) => {
     const { name, value } = e.target as HTMLInputElement;
@@ -173,4 +155,4 @@ const EditProduct = (props: Props) => {
   );
 };
 
-export default EditProduct;
+export default EditingItem;

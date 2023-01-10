@@ -1,16 +1,9 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Link from "next/link";
 import React, { useState } from "react";
-import {
-  DELETE_PRODUCT,
-  GET_PRODUCT,
-  GET_PRODUCTS_ID,
-  GET_PRODUCT_FILTER_ID,
-  Product,
-  Product_id,
-} from "../../../graphql/products";
-import { ALL_PRODUCTS } from "../../../pages/admin";
-import EditProduct from "./edit";
+import { GET_PRODUCT, Product, Product_id } from "../../../graphql/products";
+import DeleteProduct from "../../action/admin/deleteProduct";
+import EditingItem from "./editingItem";
 
 type Props = {};
 
@@ -21,16 +14,7 @@ const Item = (props: Product_id) => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const deleteProductCompleted = (data: any) => {
-    alert(`삭제되었습니다`);
-  };
-
-  const [deleteProduct] = useMutation(DELETE_PRODUCT, {
-    onCompleted: deleteProductCompleted,
-    refetchQueries: [
-      { query: GET_PRODUCT_FILTER_ID, variables: { category: ALL_PRODUCTS } },
-    ],
-  });
+  const deleteProduct = DeleteProduct();
 
   const handleClickBttonn = () => {
     setIsEditing(!isEditing);
@@ -44,7 +28,7 @@ const Item = (props: Product_id) => {
 
   if (isEditing) {
     return (
-      <EditProduct product={data.product} doneEditing={handleClickBttonn} />
+      <EditingItem product={data.product} doneEditing={handleClickBttonn} />
     );
   }
 
