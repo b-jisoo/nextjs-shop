@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import React, { SyntheticEvent, useState } from "react";
 import { GET_PRODUCT_FILTER_ID } from "../../graphql/products";
 import { ProductFilerById } from "../../graphql/types";
-import ProductItem from "./productItem";
+
 import ProductListView from "./view/productListView";
 
 const ProductList = () => {

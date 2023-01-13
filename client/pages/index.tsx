@@ -1,6 +1,6 @@
 import Hero from "../components/Layout/view/hero";
-import ProductList from "../components/product/productList";
 import Seo from "../components/common/Seo";
+import ProductList from "../components/product/productList";
 
 export default function HomePage() {
   return (

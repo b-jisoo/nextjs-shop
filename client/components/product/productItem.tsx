@@ -1,10 +1,10 @@
 import { useMutation, useQuery } from "@apollo/client";
 import Link from "next/link";
 import React, { SyntheticEvent } from "react";
-import { ADD_CART, GET_CARTS } from "../../graphql/cart";
 import { GET_PRODUCT } from "../../graphql/products";
-import { ProductType, ProductById } from "../../graphql/types";
+import { ProductById, ProductType } from "../../graphql/types";
 import useAddCart from "../../hooks/mutation/cart/useAddCart";
+
 import ProductItemView from "./view/productItemView";
 
 const ProductItem = (props: ProductById) => {
