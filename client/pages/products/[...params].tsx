@@ -1,9 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { SyntheticEvent } from "react";
 import DetailView from "../../components/product/view/detailView";
-import { ADD_CART, GET_CARTS } from "../../graphql/cart";
 import { GET_PRODUCT } from "../../graphql/products";
 import { ProductType } from "../../graphql/types";
 import useAddCart from "../../hooks/mutation/cart/useAddCart";

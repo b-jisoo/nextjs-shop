@@ -4,7 +4,6 @@ import { ProductFilerById, ProductType } from "../../graphql/types";
 interface IProductType {
   data: ProductType;
 }
-
 export interface ProductListViewPropsType {
   data: ProductFilerById;
   onFilterProduct: (e: SyntheticEvent) => void;

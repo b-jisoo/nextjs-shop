@@ -33,8 +33,8 @@ export const GET_PRODUCT = gql`
     }
   }
 `;
-export const GET_PRODUCT_FILTER_ID = gql`
-  query GET_PRODUCT_FILTER_ID($category: String!) {
+export const GET_FILTER_PRODUCT_ID = gql`
+  query GET_FILTER_PRODUCT_ID($category: String!) {
     productFilter(category: $category) {
       _id
     }

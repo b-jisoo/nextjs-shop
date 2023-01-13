@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import {
   DELETE_PRODUCT,
-  GET_PRODUCT_FILTER_ID,
+  GET_FILTER_PRODUCT_ID,
 } from "../../../graphql/products";
 import { ALL_PRODUCTS } from "../../../pages/admin";
 
@@ -13,7 +13,7 @@ const useDeleteProduct = () => {
   const [deleteProduct] = useMutation(DELETE_PRODUCT, {
     onCompleted: deleteProductCompleted,
     refetchQueries: [
-      { query: GET_PRODUCT_FILTER_ID, variables: { category: ALL_PRODUCTS } },
+      { query: GET_FILTER_PRODUCT_ID, variables: { category: ALL_PRODUCTS } },
     ],
   });
   return deleteProduct;

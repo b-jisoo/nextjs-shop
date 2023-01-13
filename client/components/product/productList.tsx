@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React, { SyntheticEvent, useState } from "react";
-import { GET_PRODUCT_FILTER_ID } from "../../graphql/products";
+import { GET_FILTER_PRODUCT_ID } from "../../graphql/products";
 import { ProductFilerById } from "../../graphql/types";
 
 import ProductListView from "./view/productListView";
@@ -8,7 +8,7 @@ import ProductListView from "./view/productListView";
 const ProductList = () => {
   const [category, setCategory] = useState("전체");
   const { data, loading, error, refetch } = useQuery<ProductFilerById>(
-    GET_PRODUCT_FILTER_ID,
+    GET_FILTER_PRODUCT_ID,
     {
       variables: { category },
     }
