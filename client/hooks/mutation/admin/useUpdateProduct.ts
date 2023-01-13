@@ -9,7 +9,7 @@ const updateProductCompleted = (data: any) => {
   alert(`${data.updateProduct.title}로 변경되었습니다.`);
 };
 
-const UpdateProduct = () => {
+const useUpdateProduct = () => {
   const [updateProduct, { data, loading, error }] = useMutation(
     UPDATE_PRODUCT,
     {
@@ -22,4 +22,4 @@ const UpdateProduct = () => {
   return updateProduct;
 };
 
-export default UpdateProduct;
+export default useUpdateProduct;

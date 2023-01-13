@@ -1,13 +1,14 @@
 import { useMutation, useQuery } from "@apollo/client";
 import Link from "next/link";
 import React, { SyntheticEvent } from "react";
-import { ADD_CART, GET_CARTS } from "../graphql/cart";
-import { GET_PRODUCT, Product, Product_id } from "../graphql/products";
+import { ADD_CART, GET_CARTS } from "../../graphql/cart";
+import { GET_PRODUCT } from "../../graphql/products";
+import { ProductType, ProductById } from "../../graphql/types";
 
 type Props = {};
 
-const ProductItem = (props: Product_id) => {
-  const { data, loading, error, refetch } = useQuery<Product>(GET_PRODUCT, {
+const ProductItem = (props: ProductById) => {
+  const { data, loading, error, refetch } = useQuery<ProductType>(GET_PRODUCT, {
     variables: { id: props._id },
   });
 

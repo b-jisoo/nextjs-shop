@@ -1,20 +1,21 @@
 import { useQuery } from "@apollo/client";
 import Link from "next/link";
 import React, { useState } from "react";
-import { GET_PRODUCT, Product, Product_id } from "../../../graphql/products";
-import DeleteProduct from "../../action/admin/deleteProduct";
+import { GET_PRODUCT } from "../../graphql/products";
+import { ProductType, ProductById } from "../../graphql/types";
+import useDeleteProduct from "../../hooks/mutation/admin/useDeleteProduct";
 import EditingItem from "./editingItem";
 
 type Props = {};
 
-const Item = (props: Product_id) => {
-  const { data, loading, error, refetch } = useQuery<Product>(GET_PRODUCT, {
+const Item = (props: ProductById) => {
+  const { data, loading, error, refetch } = useQuery<ProductType>(GET_PRODUCT, {
     variables: { id: props._id },
   });
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const deleteProduct = DeleteProduct();
+  const deleteProduct = useDeleteProduct();
 
   const handleClickBttonn = () => {
     setIsEditing(!isEditing);

@@ -6,7 +6,7 @@ const addProductCompleted = (data: any) => {
   alert(`${data.addProduct.title}가 추가되었습니다.`);
 };
 
-const AddAdminProduct = () => {
+const useAddAdminProduct = () => {
   const [addProduct, { data, loading, error }] = useMutation(ADD_PRODUCT, {
     onCompleted: addProductCompleted,
     refetchQueries: [
@@ -17,4 +17,4 @@ const AddAdminProduct = () => {
   return addProduct;
 };
 
-export default AddAdminProduct;
+export default useAddAdminProduct;

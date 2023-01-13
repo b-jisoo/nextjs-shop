@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useState } from "react";
-import AddAdminProduct from "../../action/admin/addProduct";
+import useAddAdminProduct from "../../hooks/mutation/admin/useAddProduct";
 
 type Props = {};
 
@@ -27,7 +27,7 @@ const AddForm = (props: Props) => {
     category: "음료",
   });
 
-  const addProduct = AddAdminProduct();
+  const addProduct = useAddAdminProduct();
 
   const handleChange = (e: SyntheticEvent) => {
     const { name, value } = e.target as HTMLInputElement;

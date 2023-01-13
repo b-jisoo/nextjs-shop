@@ -9,7 +9,7 @@ const deleteProductCompleted = (data: any) => {
   alert(`삭제되었습니다`);
 };
 
-const DeleteProduct = () => {
+const useDeleteProduct = () => {
   const [deleteProduct] = useMutation(DELETE_PRODUCT, {
     onCompleted: deleteProductCompleted,
     refetchQueries: [
@@ -19,4 +19,4 @@ const DeleteProduct = () => {
   return deleteProduct;
 };
 
-export default DeleteProduct;
+export default useDeleteProduct;

@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useState } from "react";
-import UpdateProduct from "../../action/admin/updateProduct";
+import useUpdateProduct from "../../hooks/mutation/admin/useUpdateProduct";
 
 type Props = {
   doneEditing: () => void;
@@ -24,7 +24,7 @@ const EditingItem = (props: Props) => {
     category: props.product.category,
   });
 
-  const updateProduct = UpdateProduct();
+  const updateProduct = useUpdateProduct();
 
   const handleChange = (e: SyntheticEvent) => {
     const { name, value } = e.target as HTMLInputElement;
@@ -43,7 +43,7 @@ const EditingItem = (props: Props) => {
   return (
     <li className="border-2 p-5">
       <form onSubmit={handleSubmit}>
-        <div className="grid gap-6 mb-6 md:grid-cols-2">
+        <div className="grid gap-6 mb-6 grid-cols-2">
           <div>
             <label
               htmlFor="title"
@@ -140,12 +140,12 @@ const EditingItem = (props: Props) => {
 
         <button
           type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           등록
         </button>
         <button
-          className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2"
+          className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2"
           onClick={props.doneEditing}
         >
           취소

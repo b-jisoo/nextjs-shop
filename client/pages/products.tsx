@@ -1,6 +1,6 @@
 import React from "react";
-import ProductList from "../components/productList";
-import Seo from "../components/Seo";
+import ProductList from "../components/product/productList";
+import Seo from "../components/common/Seo";
 
 type Props = {};
 

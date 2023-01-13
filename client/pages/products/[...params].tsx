@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { SyntheticEvent } from "react";
 import { ADD_CART, GET_CARTS } from "../../graphql/cart";
-import { GET_PRODUCT, Product } from "../../graphql/products";
+import { GET_PRODUCT } from "../../graphql/products";
+import { ProductType } from "../../graphql/types";
 
 type Props = {};
 type DetailParams = [string] | [];
@@ -12,7 +13,7 @@ const ProductDetail = (props: Props) => {
   const router = useRouter();
   const [id] = (router.query.params || []) as DetailParams;
   if (!id) return null;
-  const { data, loading, error, refetch } = useQuery<Product>(GET_PRODUCT, {
+  const { data, loading, error, refetch } = useQuery<ProductType>(GET_PRODUCT, {
     variables: { id },
   });
   const [addCart, {}] = useMutation(ADD_CART, {
