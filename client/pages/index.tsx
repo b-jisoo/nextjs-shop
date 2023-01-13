@@ -2,7 +2,7 @@ import Hero from "../components/Layout/hero";
 import ProductList from "../components/product/productList";
 import Seo from "../components/common/Seo";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="h-[3000px]   min-w-[1200px]">
       <Seo />

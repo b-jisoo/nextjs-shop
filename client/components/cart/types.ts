@@ -9,7 +9,7 @@ export interface CartType extends ProductType {
   _id: string;
 }
 
-export interface CartItemProps {
+export interface CartItemPropsType {
   data: CartType;
   addCart: (e: SyntheticEvent) => void;
   decreaseCart: (e: SyntheticEvent) => void;

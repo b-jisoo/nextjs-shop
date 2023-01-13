@@ -1,19 +1,12 @@
 import React from "react";
 import { ProductFilerById } from "../../graphql/types";
 import Item from "./item";
+import ListView from "./view/listView";
 
 type Props = {};
 
 const List = (props: ProductFilerById) => {
-  return (
-    <>
-      <ul className="grid grid-cols-4 gap-[10px]  px-10 min-w-[1350px]">
-        {props.productFilter.map((product, index) => (
-          <Item {...product} key={index} />
-        ))}
-      </ul>
-    </>
-  );
+  return <ListView {...props} />;
 };
 
 export default List;

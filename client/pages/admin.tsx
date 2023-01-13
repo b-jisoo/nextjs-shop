@@ -8,7 +8,7 @@ import { ProductFilerById } from "../graphql/types";
 type Props = {};
 export const ALL_PRODUCTS = "전체";
 
-const Admin = (props: Props) => {
+const AdminPage = (props: Props) => {
   const { data, loading, error, refetch } = useQuery<ProductFilerById>(
     GET_PRODUCT_FILTER_ID,
     {
@@ -26,4 +26,4 @@ const Admin = (props: Props) => {
   );
 };
 
-export default Admin;
+export default AdminPage;

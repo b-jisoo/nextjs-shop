@@ -10,7 +10,6 @@ type Props = {};
 const CartPage = (props: Props) => {
   const { data, loading, error, refetch } = useQuery<CartTypes>(GET_CARTS);
   if (!data) return null;
-  console.log(data);
   return (
     <>
       <Seo />
