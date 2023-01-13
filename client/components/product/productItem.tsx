@@ -4,39 +4,22 @@ import React, { SyntheticEvent } from "react";
 import { ADD_CART, GET_CARTS } from "../../graphql/cart";
 import { GET_PRODUCT } from "../../graphql/products";
 import { ProductType, ProductById } from "../../graphql/types";
-
-type Props = {};
+import useAddCart from "../../hooks/mutation/cart/useAddCart";
+import ProductItemView from "./view/productItemView";
 
 const ProductItem = (props: ProductById) => {
   const { data, loading, error, refetch } = useQuery<ProductType>(GET_PRODUCT, {
     variables: { id: props._id },
   });
 
-  const [addCart, {}] = useMutation(ADD_CART, {
-    refetchQueries: [{ query: GET_CARTS }],
-  });
+  const addCart = useAddCart();
 
   const handleAddCart = (e: SyntheticEvent) => {
     addCart({ variables: { productId: props._id } });
   };
   if (!data) return null;
 
-  return (
-    <>
-      <li className="border-2 border-solid flex flex-col text-center justify-center py-4">
-        <Link href={`/products/${data.product._id}`}>
-          <p className="">{data.product.title}</p>
-          <img className="mx-auto w-[200px]" src={data.product.imageUrl} />
-        </Link>
-        <span className="product-item__price">
-          ₩{data.product.price.toLocaleString("ko-KR")}
-        </span>
-        <button className="border-2 w-32 mx-auto " onClick={handleAddCart}>
-          담기
-        </button>
-      </li>
-    </>
-  );
+  return <ProductItemView data={data} onAddCart={handleAddCart} />;
 };
 
 export default ProductItem;

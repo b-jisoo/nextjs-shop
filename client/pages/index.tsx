@@ -1,4 +1,4 @@
-import Hero from "../components/Layout/hero";
+import Hero from "../components/Layout/view/hero";
 import ProductList from "../components/product/productList";
 import Seo from "../components/common/Seo";
 

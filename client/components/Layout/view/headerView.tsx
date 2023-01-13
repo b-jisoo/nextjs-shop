@@ -1,17 +1,11 @@
 import Image from "next/image";
-import vercel from "../../public/favicon.ico";
-import cartIcon from "../../public/cart_icon.png";
+import vercel from "../../../public/favicon.ico";
+import cartIcon from "../../../public/cart_icon.png";
 import React, { useState } from "react";
 import Link from "next/link";
-import { HeaderProps } from "./types";
+import { HeaderProps } from "../types";
 
-const HeaderView = ({ data }: HeaderProps) => {
-  const [openMenu, setOpenMenu] = useState(false);
-
-  const handleClick = () => {
-    setOpenMenu(!openMenu);
-  };
-
+const HeaderView = ({ data, openMenu, onClick }: HeaderProps) => {
   return (
     <header>
       <nav className="flex items-center justify-between flex-wrap p-6 fixed top-0 w-full bg-white z-[99] shadow-md text-black ">
@@ -31,7 +25,7 @@ const HeaderView = ({ data }: HeaderProps) => {
         <div className="block lg:hidden">
           <button
             className="flex items-center px-3 py-2 border rounded text-black border-teal-400 hover:text-gray-400 hover:border-gray-800"
-            onClick={handleClick}
+            onClick={onClick}
           >
             <svg
               className="fill-current h-3 w-3"
