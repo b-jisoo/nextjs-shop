@@ -41,11 +41,31 @@
 
 <h2>백엔드</h2>
 
-<img src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white">
-<img alt="MongoDB" src="https://img.shields.io/badge/MongoDB-8cbe68?style=for-the-badge&logo=MongoDB&logoColor=white">
-<img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white">
+![Express](https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-8cbe68?style=for-the-badge&logo=MongoDB&logoColor=white)
+![AmazonAWS](https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
 
 <br>
+
+## 설치 및 실행
+
+동시 실행이 되지 않습니다. 터미널을 열고 각각 명령어를 입력하세요. 실행 순서는 관계 없습니다.
+
+- 클라이언트 실행
+  - 도메인 : http://localhost:3000
+
+```shell
+cd client && npm install && npm run dev
+cd ..
+```
+
+- 서버 실행
+  - 도메인 : http://localhost:5000
+
+```shell
+cd server && npm install && npm run dev
+cd ..
+```
 
 # ✍️ 주요 기능
 
