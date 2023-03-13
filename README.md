@@ -2,7 +2,7 @@
 
 # 😃 개요
 
-<a href="http://ec2-3-36-126-19.ap-northeast-2.compute.amazonaws.com/">Next-Shop</a>은,
+<a href="http://ec2-3-35-216-73.ap-northeast-2.compute.amazonaws.com/">Next-Shop</a>은,
 
 - 누구나 쉽게 등록된 상품을 볼 수 있습니다.
 - 장바구니를 이용하여 여러 상품을 담을 수 있습니다.
