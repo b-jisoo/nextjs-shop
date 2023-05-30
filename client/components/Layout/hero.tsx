@@ -5,6 +5,9 @@ import heroImage from "../../public/hero_image.png";
 type Props = {};
 
 const Hero = (props: Props) => {
+  const handleClick = () => {
+    window.scrollTo({ top: 800, behavior: "smooth" });
+  };
   return (
     <div>
       <div
@@ -21,7 +24,10 @@ const Hero = (props: Props) => {
           <div className="text-2xl mt-12">
             망설이면 품절, 아울렛 인기제품을 놓치지 마세요
           </div>
-          <button className="bg-white text-black hover:bg-gray-700 font-bold py-2 px-4 rounded-full mt-12 w-28 h-11">
+          <button
+            onClick={handleClick}
+            className="bg-white text-black hover:bg-gray-700 font-bold py-2 px-4 rounded-full mt-12 w-28 h-11"
+          >
             구매하기
           </button>
         </div>
