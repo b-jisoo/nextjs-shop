@@ -14,10 +14,11 @@ const CartList = (props: CartType) => {
         상품이 없습니다
       </div>
     );
+
   return (
     <>
       {props.cart.map((item, i) => (
-        <CartItem {...item} key={i} />
+        <CartItem {...item} key={item._id} />
       ))}
     </>
   );

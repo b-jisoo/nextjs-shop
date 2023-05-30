@@ -9,7 +9,7 @@ const List = (props: ProductFilerId) => {
     <>
       <ul className="grid grid-cols-4 gap-[10px]  px-10 min-w-[800px]">
         {props.productFilter.map((product, index) => (
-          <Item {...product} key={index} />
+          <Item {...product} key={product._id} />
         ))}
       </ul>
     </>
