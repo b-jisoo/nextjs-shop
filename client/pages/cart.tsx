@@ -1,38 +1,21 @@
 import { useQuery } from "@apollo/client";
-import Link from "next/link";
 import React from "react";
-import CartList from "../components/Layout/cart/cartList";
-import Seo from "../components/Seo";
+import Cart from "../components/cart/view/cartPageView";
+import { CartTypes } from "../components/cart/types";
+import Seo from "../components/common/Seo";
 import { GET_CARTS } from "../graphql/cart";
-
-export type CartType = {
-  cart: Item[];
-};
-export type Item = {
-  amount: number;
-  product: {
-    _id: string;
-    imageUrl: string;
-    price: number;
-    title: string;
-    description: string;
-    createdAt: number;
-    category: string;
-  };
-  _id: string;
-};
 
 type Props = {};
 
-const Cart = (props: Props) => {
-  const { data, loading, error, refetch } = useQuery<CartType>(GET_CARTS);
+const CartPage = (props: Props) => {
+  const { data, loading, error, refetch } = useQuery<CartTypes>(GET_CARTS);
   if (!data) return null;
   return (
     <>
       <Seo />
       <section className="mt-20 min-h-screen bg-gray-100">
         <div className="">
-          <div className="container mx-auto mt-10 min-w-[800px]">
+          <div className="container mx-auto mt-10">
             <div className="flex shadow-md my-10">
               <div className="w-3/4 bg-white px-10 py-10">
                 <div className="flex justify-between border-b pb-8">
@@ -136,4 +119,4 @@ const Cart = (props: Props) => {
   );
 };
 
-export default Cart;
+export default CartPage;

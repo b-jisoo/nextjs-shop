@@ -1,10 +1,8 @@
 import React from "react";
-import ProductList from "../components/productList";
-import Seo from "../components/Seo";
+import Seo from "../components/common/Seo";
+import ProductList from "../components/product/productList";
 
-type Props = {};
-
-const Products = (props: Props) => {
+const ProductsPage = () => {
   return (
     <>
       <Seo />
@@ -13,4 +11,4 @@ const Products = (props: Props) => {
   );
 };
 
-export default Products;
+export default ProductsPage;

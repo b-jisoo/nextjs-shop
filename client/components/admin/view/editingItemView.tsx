@@ -1,50 +1,24 @@
-import React, { SyntheticEvent, useState } from "react";
-import UpdateProduct from "../../action/admin/updateProduct";
+import React from "react";
+import { EditingItemViewPropsType } from "../types";
 
-type Props = {
-  doneEditing: () => void;
-  product: {
-    _id: string;
-    imageUrl: string;
-    price: number;
-    title: string;
-    description: string;
-    createdAt: number;
-    category: string;
-  };
-};
-
-const EditingItem = (props: Props) => {
-  const [inputs, setInputs] = useState({
-    id: props.product._id,
-    title: props.product.title,
-    imageUrl: props.product.imageUrl,
-    price: props.product.price,
-    description: props.product.description,
-    category: props.product.category,
-  });
-
-  const updateProduct = UpdateProduct();
-
-  const handleChange = (e: SyntheticEvent) => {
-    const { name, value } = e.target as HTMLInputElement;
-    setInputs({
-      ...inputs,
-      [name]: ["price"].includes(name) ? Number(value) : value,
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    updateProduct({ variables: inputs });
-    props.doneEditing();
-  };
-
+const EditingItemView = ({
+  inputs,
+  onSubmit,
+  onChange,
+  doneEditing,
+}: EditingItemViewPropsType) => {
   return (
+<<<<<<< HEAD:client/components/Layout/admin/editingItem.tsx
     <li className="border-2 md:p-1 lg:p-5">
       <form onSubmit={handleSubmit}>
         <div className="grid gap-6 mb-6 md:grid-cols-2 sm:mb-3 sm:gap-3 sm:h-36">
           <div className="">
+=======
+    <li className="border-2 p-5">
+      <form onSubmit={onSubmit}>
+        <div className="grid gap-6 mb-6 grid-cols-2">
+          <div>
+>>>>>>> main:client/components/admin/view/editingItemView.tsx
             <label
               htmlFor="title"
               className="block  mb-2 md:text-[11px] text-sm font-medium text-gray-900 dark:text-white"
@@ -57,7 +31,7 @@ const EditingItem = (props: Props) => {
               name="title"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
               placeholder="상품명"
-              onChange={handleChange}
+              onChange={onChange}
               value={inputs.title}
               required
             />
@@ -76,7 +50,7 @@ const EditingItem = (props: Props) => {
               name="imageUrl"
               className="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="이미지 URL"
-              onChange={handleChange}
+              onChange={onChange}
               value={inputs.imageUrl}
               required
             />
@@ -95,7 +69,7 @@ const EditingItem = (props: Props) => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="가격"
               min={0}
-              onChange={handleChange}
+              onChange={onChange}
               value={inputs.price}
               required
             />
@@ -114,7 +88,7 @@ const EditingItem = (props: Props) => {
             name="description"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="상세 설명"
-            onChange={handleChange}
+            onChange={onChange}
             value={inputs.description}
             required
           />
@@ -129,7 +103,7 @@ const EditingItem = (props: Props) => {
           className="border-2 mr-3 mb-2"
           name="category"
           id="category"
-          onChange={handleChange}
+          onChange={onChange}
           value={inputs.category}
         >
           <option value="음료">음료</option>
@@ -140,13 +114,22 @@ const EditingItem = (props: Props) => {
 
         <button
           type="submit"
+<<<<<<< HEAD:client/components/Layout/admin/editingItem.tsx
           className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+=======
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+>>>>>>> main:client/components/admin/view/editingItemView.tsx
         >
           등록
         </button>
         <button
+<<<<<<< HEAD:client/components/Layout/admin/editingItem.tsx
           className="  text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2"
           onClick={props.doneEditing}
+=======
+          className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2"
+          onClick={doneEditing}
+>>>>>>> main:client/components/admin/view/editingItemView.tsx
         >
           취소
         </button>
@@ -155,4 +138,4 @@ const EditingItem = (props: Props) => {
   );
 };
 
-export default EditingItem;
+export default EditingItemView;

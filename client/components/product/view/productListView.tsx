@@ -1,25 +1,11 @@
-import { useQuery } from "@apollo/client";
-import React, { SyntheticEvent, useState } from "react";
-import { GET_PRODUCT_FILTER_ID, ProductFilerId } from "../graphql/products";
-import ProductItem from "./productItem";
+import React from "react";
+import ProductItem from "../productItem";
+import { ProductListViewPropsType } from "../types";
 
-type Props = {};
-
-const ProductList = (props: Props) => {
-  const [category, setCategory] = useState("전체");
-  const { data, loading, error, refetch } = useQuery<ProductFilerId>(
-    GET_PRODUCT_FILTER_ID,
-    {
-      variables: { category },
-    }
-  );
-
-  const handleFilteringProduct = (e: SyntheticEvent) => {
-    setCategory((e.target as HTMLInputElement).value);
-  };
-
-  if (!data) return null;
-
+const ProductListView = ({
+  data,
+  onFilterProduct,
+}: ProductListViewPropsType) => {
   return (
     <>
       <div className=" flex justify-center items-center h-32 mt-16 border-b-2 border-gray-700">
@@ -28,14 +14,14 @@ const ProductList = (props: Props) => {
       <div className="flex justify-center items-center w-full mt-16  ">
         <button
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mr-5"
-          onClick={handleFilteringProduct}
+          onClick={onFilterProduct}
           value={"전체"}
         >
           전체
         </button>
         <button
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mr-5"
-          onClick={handleFilteringProduct}
+          onClick={onFilterProduct}
           value={"음료"}
         >
           음료
@@ -43,21 +29,21 @@ const ProductList = (props: Props) => {
         <button
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mr-5"
           value={"빵"}
-          onClick={handleFilteringProduct}
+          onClick={onFilterProduct}
         >
           빵
         </button>
         <button
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mr-5"
           value={"과자"}
-          onClick={handleFilteringProduct}
+          onClick={onFilterProduct}
         >
           과자
         </button>
         <button
           className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
           value={"아이스크림"}
-          onClick={handleFilteringProduct}
+          onClick={onFilterProduct}
         >
           아이스크림
         </button>
@@ -71,4 +57,4 @@ const ProductList = (props: Props) => {
   );
 };
 
-export default ProductList;
+export default ProductListView;

@@ -1,51 +1,11 @@
-import React, { SyntheticEvent, useState } from "react";
-import AddAdminProduct from "../../action/admin/addProduct";
+import React from "react";
+import { addFormPropsType } from "../types";
 
-type Props = {};
-
-/*
-  {
-    addProduct: {
-      category: "콜라";
-      createdAt: "2022. 12. 2.";
-      description: "제로펩시 100개";
-      imageUrl: "https://shopping-phinf.pstatic.net/main_2706118/27061187522.20210507150752.jpg?type=f640";
-      price: 100000;
-      title: "제로펩시100개";
-      __typename: "Product";
-      _id: "63890c79ec108257fa95d00b";
-    }
-  }
-*/
-
-const AddForm = (props: Props) => {
-  const [inputs, setInputs] = useState({
-    title: "",
-    imageUrl: "",
-    price: "",
-    description: "",
-    category: "음료",
-  });
-
-  const addProduct = AddAdminProduct();
-
-  const handleChange = (e: SyntheticEvent) => {
-    const { name, value } = e.target as HTMLInputElement;
-    setInputs({
-      ...inputs,
-      [name]: ["price"].includes(name) ? Number(value) : value,
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    addProduct({ variables: inputs });
-  };
-
+const AddFormView = ({ inputs, onChange, onSubmit }: addFormPropsType) => {
   return (
     <div className="mt-32 w-96 mx-auto mb-20">
       <div className="mb-10">어드민</div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
@@ -60,7 +20,7 @@ const AddForm = (props: Props) => {
               name="title"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="상품명"
-              onChange={handleChange}
+              onChange={onChange}
               value={inputs.title}
               required
             />
@@ -79,7 +39,7 @@ const AddForm = (props: Props) => {
               name="imageUrl"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="이미지 URL"
-              onChange={handleChange}
+              onChange={onChange}
               value={inputs.imageUrl}
               required
             />
@@ -98,7 +58,7 @@ const AddForm = (props: Props) => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="가격"
               min={0}
-              onChange={handleChange}
+              onChange={onChange}
               value={inputs.price}
               required
             />
@@ -117,7 +77,7 @@ const AddForm = (props: Props) => {
             name="description"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="상세 설명"
-            onChange={handleChange}
+            onChange={onChange}
             value={inputs.description}
             required
           />
@@ -132,7 +92,7 @@ const AddForm = (props: Props) => {
           className="border-2 mr-3"
           name="category"
           id="category"
-          onChange={handleChange}
+          onChange={onChange}
           value={inputs.category}
         >
           <option value="음료">음료</option>
@@ -152,4 +112,4 @@ const AddForm = (props: Props) => {
   );
 };
 
-export default AddForm;
+export default AddFormView;

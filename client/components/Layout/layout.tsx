@@ -1,4 +1,4 @@
-import Footer from "./footer";
+import Footer from "./view/footer";
 import Header from "./header";
 
 interface AppLayoutProps {

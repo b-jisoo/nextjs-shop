@@ -1,13 +1,8 @@
-import { useQuery } from "@apollo/client";
 import React from "react";
-import { GET_CARTS } from "../../../graphql/cart";
-import { Product } from "../../../graphql/products";
-import { CartType } from "../../../pages/cart";
-import CartItem from "./cartItem";
+import CartItem from "../cartItem";
+import { CartTypes } from "../types";
 
-type Props = {};
-
-const CartList = (props: CartType) => {
+const CartListView = (props: CartTypes) => {
   if (props.cart.length === 0)
     return (
       <div className="flex justify-center items-center text-lg h-80">
@@ -24,4 +19,4 @@ const CartList = (props: CartType) => {
   );
 };
 
-export default CartList;
+export default CartListView;

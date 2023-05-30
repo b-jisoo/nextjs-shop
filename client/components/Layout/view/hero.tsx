@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import heroImage from "../../public/hero_image.png";
+import heroImage from "../../../public/hero_image.png";
 
 type Props = {};
 
