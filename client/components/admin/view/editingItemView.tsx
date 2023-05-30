@@ -8,13 +8,20 @@ const EditingItemView = ({
   doneEditing,
 }: EditingItemViewPropsType) => {
   return (
+<<<<<<< HEAD:client/components/Layout/admin/editingItem.tsx
+    <li className="border-2 md:p-1 lg:p-5">
+      <form onSubmit={handleSubmit}>
+        <div className="grid gap-6 mb-6 md:grid-cols-2 sm:mb-3 sm:gap-3 sm:h-36">
+          <div className="">
+=======
     <li className="border-2 p-5">
       <form onSubmit={onSubmit}>
         <div className="grid gap-6 mb-6 grid-cols-2">
           <div>
+>>>>>>> main:client/components/admin/view/editingItemView.tsx
             <label
               htmlFor="title"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block  mb-2 md:text-[11px] text-sm font-medium text-gray-900 dark:text-white"
             >
               상품명
             </label>
@@ -22,7 +29,7 @@ const EditingItemView = ({
               type="text"
               id="title"
               name="title"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
               placeholder="상품명"
               onChange={onChange}
               value={inputs.title}
@@ -33,7 +40,7 @@ const EditingItemView = ({
           <div>
             <label
               htmlFor="imageUrl"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm md:text-[11px] font-medium text-gray-900 dark:text-white"
             >
               이미지 URL
             </label>
@@ -41,7 +48,7 @@ const EditingItemView = ({
               type="url"
               id="imageUrl"
               name="imageUrl"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="이미지 URL"
               onChange={onChange}
               value={inputs.imageUrl}
@@ -51,7 +58,7 @@ const EditingItemView = ({
           <div>
             <label
               htmlFor="price"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm md:text-[11px] font-medium text-gray-900 dark:text-white"
             >
               가격
             </label>
@@ -68,10 +75,10 @@ const EditingItemView = ({
             />
           </div>
         </div>
-        <div className="mb-6">
+        <div className="mb-6 sm:mb-3">
           <label
             htmlFor="description"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm md:text-[11px] font-medium text-gray-900 dark:text-white"
           >
             상세 설명
           </label>
@@ -88,12 +95,12 @@ const EditingItemView = ({
         </div>
         <label
           htmlFor="category"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm md:text-[11px] font-medium text-gray-900 dark:text-white"
         >
           카테고리
         </label>
         <select
-          className="border-2 mr-3"
+          className="border-2 mr-3 mb-2"
           name="category"
           id="category"
           onChange={onChange}
@@ -107,13 +114,22 @@ const EditingItemView = ({
 
         <button
           type="submit"
+<<<<<<< HEAD:client/components/Layout/admin/editingItem.tsx
+          className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+=======
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+>>>>>>> main:client/components/admin/view/editingItemView.tsx
         >
           등록
         </button>
         <button
+<<<<<<< HEAD:client/components/Layout/admin/editingItem.tsx
+          className="  text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2"
+          onClick={props.doneEditing}
+=======
           className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2"
           onClick={doneEditing}
+>>>>>>> main:client/components/admin/view/editingItemView.tsx
         >
           취소
         </button>

@@ -1,12 +1,15 @@
+import * as dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import schema from "./schema";
 import resolvers from "./resolvers";
 import mongoose from "mongoose";
-import config from "./config/key";
 import cors from "cors";
 
 const port = 5000;
+
+const MongoDB_KEY = process.env.MONGO_URI;
 
 (async () => {
   const server = new ApolloServer({
@@ -25,9 +28,9 @@ const port = 5000;
       credentials: true,
     },
   });
-
+  mongoose.set("strictQuery", false);
   const connect = mongoose
-    .connect(config().mongoURI)
+    .connect(`${MongoDB_KEY}`)
     .then(() => console.log("MongoDB Connected..."))
     .catch((err) => console.log(err));
 
