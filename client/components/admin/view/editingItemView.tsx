@@ -8,17 +8,10 @@ const EditingItemView = ({
   doneEditing,
 }: EditingItemViewPropsType) => {
   return (
-<<<<<<< HEAD:client/components/Layout/admin/editingItem.tsx
-    <li className="border-2 md:p-1 lg:p-5">
-      <form onSubmit={handleSubmit}>
-        <div className="grid gap-6 mb-6 md:grid-cols-2 sm:mb-3 sm:gap-3 sm:h-36">
-          <div className="">
-=======
     <li className="border-2 p-5">
       <form onSubmit={onSubmit}>
         <div className="grid gap-6 mb-6 grid-cols-2">
           <div>
->>>>>>> main:client/components/admin/view/editingItemView.tsx
             <label
               htmlFor="title"
               className="block  mb-2 md:text-[11px] text-sm font-medium text-gray-900 dark:text-white"
@@ -114,22 +107,13 @@ const EditingItemView = ({
 
         <button
           type="submit"
-<<<<<<< HEAD:client/components/Layout/admin/editingItem.tsx
-          className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-=======
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
->>>>>>> main:client/components/admin/view/editingItemView.tsx
         >
           등록
         </button>
         <button
-<<<<<<< HEAD:client/components/Layout/admin/editingItem.tsx
-          className="  text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2"
-          onClick={props.doneEditing}
-=======
           className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2"
           onClick={doneEditing}
->>>>>>> main:client/components/admin/view/editingItemView.tsx
         >
           취소
         </button>
