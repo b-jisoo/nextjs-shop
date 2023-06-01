@@ -4,6 +4,8 @@ import Cart from "../components/cart/view/cartPageView";
 import { CartTypes } from "../components/cart/types";
 import Seo from "../components/common/Seo";
 import { GET_CARTS } from "../graphql/cart";
+import CartList from "../components/cart/cartList";
+import Link from "next/link";
 
 type Props = {};
 
